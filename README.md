@@ -1,7 +1,15 @@
 # 🎬 Movie Recommendation System
 
 An interactive movie recommendation web app built with **Streamlit**, powered by similarity matrices and enriched with posters & IMDb links via the OMDb API.
+---
 
+## 📸 Screenshots
+
+### Local Run (PyCharm)
+![Local Run](screenshots/movieRecommendation_SS1.png)
+
+### Deployed App (Streamlit)
+![Deployed App](screenshots/movieRecommendation_SS2.png)
 ---
 
 ## 🚀 Live Demo
