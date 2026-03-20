@@ -4,7 +4,7 @@ import pandas as pd
 import requests
 
 # Load preprocessed data
-new_df = pickle.load(open("movies.pkl", "rb"))
+new_df = pickle.load(open("movies_all.pkl", "rb"))
 similarity = pickle.load(open("similarity.pkl", "rb"))
 
 # OMDb API call for posters + IMDb link
@@ -22,7 +22,7 @@ def fetch_poster_omdb(movie_title):
 
 def recommend(movie):
     try:
-        movie_index = new_df[new_df['title'] == movie].index[0]
+        movie_index = new_df[new_df['Name'] == movie].index[0]
     except IndexError:
         return [], []  # movie not found
 
@@ -33,7 +33,7 @@ def recommend(movie):
     recommended_movie_data = []
 
     for i in movie_list:
-        title = new_df.iloc[i[0]].title
+        title = new_df.iloc[i[0]].Name
         poster, imdb_url = fetch_poster_omdb(title)
         recommended_movie_names.append(title)
         recommended_movie_data.append((poster, imdb_url))
@@ -44,7 +44,7 @@ def recommend(movie):
 st.title(":blue[Movie Recommendation Website] :sunglasses:", text_alignment="center")
 
 # Dropdown for movie selection
-movie_list = new_df['title'].values
+movie_list = new_df['Name'].values
 selected_movie = st.selectbox("Type or select a movie", movie_list)
 
 if st.button("Show Recommendations"):
