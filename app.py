@@ -2,10 +2,15 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import kagglehub
+import os
+
+# Download dataset from Kaggle (public dataset, no auth needed)
+dataset_path = kagglehub.dataset_download("ridatarique/movie-recommendation-system-data")
 
 # Load preprocessed data
-new_df = pickle.load(open("small_movies_all.pkl", "rb"))
-similarity = pickle.load(open("small_similarity.pkl", "rb"))
+new_df = pickle.load(open(os.path.join(dataset_path, "small_movies_all.pkl"), "rb"))
+similarity = pickle.load(open(os.path.join(dataset_path, "small_similarity.pkl"), "rb"))
 
 # OMDb API call for posters + IMDb link
 def fetch_poster_omdb(movie_title):
