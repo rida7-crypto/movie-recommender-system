@@ -4,8 +4,8 @@ import pandas as pd
 import requests
 
 # Load preprocessed data
-new_df = pickle.load(open("movies_all.pkl", "rb"))
-similarity = pickle.load(open("similarity.pkl", "rb"))
+new_df = pickle.load(open("small_movies_all.pkl", "rb"))
+similarity = pickle.load(open("small_similarity.pkl", "rb"))
 
 # OMDb API call for posters + IMDb link
 def fetch_poster_omdb(movie_title):
